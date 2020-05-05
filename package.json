@@ -1,11 +1,21 @@
 {
   "name": "diff-ddos-estimator",
-  "version": "1.0.0",
+  "version": "1.0.3",
   "description": "Remake of 2nd project",
   "main": "index.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+  "bin": {
+    "gendiff": "dist/bin/gendiff.js"
   },
+  "scripts": {
+    "babel": "babel",
+    "eslint": "eslint",
+    "babel-node": "babel-node",
+    "build": "NODE_ENV=production babel src --out-dir dist --source-maps inline",
+    "prepublishOnly": "npm run build"
+  },
+  "files": [
+    "dist"
+  ],
   "repository": {
     "type": "git",
     "url": "git+https://github.com/ddos-kaz/project-lvl2-remake.git"
@@ -22,6 +32,7 @@
   "devDependencies": {
     "babel-cli": "^6.26.0",
     "babel-core": "^6.26.3",
+    "babel-eslint": "^10.1.0",
     "babel-preset-env": "^1.7.0",
     "babel-preset-stage-0": "^6.24.1",
     "eslint": "^6.8.0",
