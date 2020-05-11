@@ -8,3 +8,7 @@ npm-publish:
 	npm publish
 install:
 	npm install
+test:
+	npm test
+test-watch:
+	npm test --watchAll
