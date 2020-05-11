@@ -1,6 +1,6 @@
 {
   "name": "diff-ddos-estimator",
-  "version": "2.0.2",
+  "version": "4.0.2",
   "description": "Remake of 2nd project",
   "main": "index.js",
   "bin": {
@@ -48,6 +48,8 @@
   "dependencies": {
     "@jest/globals": "^26.0.1",
     "commander": "^5.1.0",
+    "ini": "^1.3.5",
+    "js-yaml": "^3.13.1",
     "lodash": "^4.17.15"
   }
 }

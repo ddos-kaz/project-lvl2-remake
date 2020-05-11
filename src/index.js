@@ -1,5 +1,7 @@
 import fs from 'fs';
+import path from 'path';
 import lodash from 'lodash';
+import generateObj from './parsers';
 
 const parse = (beforeObj, afterObj, keys) => keys.reduce((acc, key) => {
   const resultObj = {
@@ -28,12 +30,13 @@ const render = (data) => data.map((item) => `${item.sign}${item.name}: ${item.va
 export default (beforeFilePath, afterFilePath) => {
   const beforeFile = fs.readFileSync(beforeFilePath, 'utf-8');
   const afterFile = fs.readFileSync(afterFilePath, 'utf-8');
+  const beforeFileExt = path.extname(beforeFilePath);
+  const afterFileExt = path.extname(afterFilePath);
 
-  const beforeFileData = JSON.parse(beforeFile);
-  const afterFileData = JSON.parse(afterFile);
+  const beforeFileData = generateObj(beforeFileExt)(beforeFile);
+  const afterFileData = generateObj(afterFileExt)(afterFile);
   const allKeys = lodash.union(Object.keys(beforeFileData), Object.keys(afterFileData));
 
   const parsedData = parse(beforeFileData, afterFileData, allKeys);
-  console.log(`{\n${render(parsedData)}\n}`);
   return `{\n${render(parsedData)}\n}`;
 };
