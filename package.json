@@ -1,6 +1,6 @@
 {
   "name": "diff-ddos-estimator",
-  "version": "5.0.1",
+  "version": "7.0.2",
   "description": "Remake of 2nd project",
   "main": "index.js",
   "bin": {
