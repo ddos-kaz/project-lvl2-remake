@@ -14,7 +14,14 @@ describe('Testing JSON files', () => {
     const deepJSONPathBefore = `${__dirname}/__fixtures__/json/before-deep.json`;
     const deepJSONPathAfter = `${__dirname}/__fixtures__/json/after-deep.json`;
     const expectedDeepJson = fs.readFileSync(`${__dirname}/__fixtures__/json/result-deep`, 'utf-8');
-    expect(genDiff(deepJSONPathBefore, deepJSONPathAfter)).toEqual(expectedDeepJson);
+    expect(genDiff(deepJSONPathBefore, deepJSONPathAfter, 'tree')).toEqual(expectedDeepJson);
+  });
+
+  test('Testing plain JSON files', () => {
+    const deepIniPathBefore = `${__dirname}/__fixtures__/json/before-flat.json`;
+    const deepIniPathAfter = `${__dirname}/__fixtures__/json/after-flat.json`;
+    const expectedPlainIni = fs.readFileSync(`${__dirname}/__fixtures__/json/result-plain`, 'utf-8');
+    expect(genDiff(deepIniPathBefore, deepIniPathAfter, 'plain')).toEqual(expectedPlainIni);
   });
 });
 
@@ -30,7 +37,14 @@ describe('Testing YAML files', () => {
     const deepYamlPathBefore = `${__dirname}/__fixtures__/yaml/before-deep.yaml`;
     const deepYamlPathAfter = `${__dirname}/__fixtures__/yaml/after-deep.yaml`;
     const expectedDeepYaml = fs.readFileSync(`${__dirname}/__fixtures__/yaml/result-deep`, 'utf-8');
-    expect(genDiff(deepYamlPathBefore, deepYamlPathAfter)).toEqual(expectedDeepYaml);
+    expect(genDiff(deepYamlPathBefore, deepYamlPathAfter, 'tree')).toEqual(expectedDeepYaml);
+  });
+
+  test('Testing plain YAML files', () => {
+    const deepYamlPathBefore = `${__dirname}/__fixtures__/yaml/before-flat.yaml`;
+    const deepYamlPathAfter = `${__dirname}/__fixtures__/yaml/after-flat.yaml`;
+    const expectedPlainYaml = fs.readFileSync(`${__dirname}/__fixtures__/yaml/result-plain`, 'utf-8');
+    expect(genDiff(deepYamlPathBefore, deepYamlPathAfter, 'plain')).toEqual(expectedPlainYaml);
   });
 });
 
@@ -42,10 +56,17 @@ describe('Testing INI files', () => {
     expect(genDiff(flatIniPathBefore, flatIniPathAfter)).toEqual(expectedFlatIni);
   });
 
-  test('Testing dee[] INI files', () => {
+  test('Testing deep INI files', () => {
     const deepIniPathBefore = `${__dirname}/__fixtures__/ini/before-flat.ini`;
     const deepIniPathAfter = `${__dirname}/__fixtures__/ini/after-flat.ini`;
     const expectedDeepIni = fs.readFileSync(`${__dirname}/__fixtures__/ini/result-flat`, 'utf-8');
-    expect(genDiff(deepIniPathBefore, deepIniPathAfter)).toEqual(expectedDeepIni);
+    expect(genDiff(deepIniPathBefore, deepIniPathAfter, 'tree')).toEqual(expectedDeepIni);
+  });
+
+  test('Testing plain INI files', () => {
+    const flatIniPathBefore = `${__dirname}/__fixtures__/ini/before-flat.ini`;
+    const flatIniPathAfter = `${__dirname}/__fixtures__/ini/after-flat.ini`;
+    const expectedPlainJson = fs.readFileSync(`${__dirname}/__fixtures__/ini/result-plain`, 'utf-8');
+    expect(genDiff(flatIniPathBefore, flatIniPathAfter, 'plain')).toEqual(expectedPlainJson);
   });
 });
